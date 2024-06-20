@@ -22,22 +22,13 @@ function getComputerChoice() {
  
 }
 
-    function getHumanChoice() {
-
-        humanvalue = prompt("Enter Rock, Paper or Scissors:");
-        humanvalue = (humanvalue.charAt(0).toUpperCase() + humanvalue.slice(1).toLowerCase())
-
-    if (humanvalue == "Rock" || humanvalue == "Paper" || humanvalue == "Scissors") {
-            return humanvalue;
-    }
-    else {
-        return humanvalue = "Error."
-    }
-    }
+const results = document.querySelector("#rslt");
+let win = undefined;
+const winner = document.createElement('p').textContent = win;
     
     function playRound(computervalue, humanvalue) {
         if (computervalue === "Rock" && humanvalue === "Rock") {
-            return computerscore = computerscore + 1, humanscore = humanscore + 1, console.log("A Tie!");
+            return computerscore = computerscore + 1, humanscore = humanscore + 1, win = 'A Tie!';
         }
         else if (computervalue === "Rock" && humanvalue === "Scissors") {
             return computerscore = (computerscore + 1), humanscore = humanscore, console.log("You lost! Rock is stronger than scissors.");
@@ -66,40 +57,30 @@ function getComputerChoice() {
         else {
             return console.log("Oops, something went wrong!")
         }
-        
+    
 }
+
 
 function playGame() {
     getComputerChoice()
-    getHumanChoice()
     playRound(computervalue, humanvalue)  
-    getComputerChoice()
-    getHumanChoice()
-    playRound(computervalue, humanvalue) 
-    getComputerChoice()
-    getHumanChoice()
-    playRound(computervalue, humanvalue) 
-    getComputerChoice()
-    getHumanChoice()
-    playRound(computervalue, humanvalue) 
-    getComputerChoice()
-    getHumanChoice()
-    playRound(computervalue, humanvalue) 
-    
-    if (humanscore > computerscore) {
-        console.log("Congratulations, you won this game!")
-    }
-    else if (humanscore < computerscore) {
-        console.log("You lost, update the page, maybe you will win next time?")
-    }
-    else if (humanscore == computerscore) {
-        console.log("Thats a tie! Play again to choose da winner.")
-    }
-    else {
-        console.log("An error occured. Unexpected numbers.")
-    }
 }
 
-    playGame()   
-    console.log("Computer: " + computerscore);
-    console.log("You: " + humanscore);
+const brock = document.querySelector("#rock");
+brock.addEventListener('click',() => { 
+     humanvalue = 'Rock';
+    playGame(computervalue, humanvalue);
+});
+const bpaper = document.querySelector("#paper");
+bpaper.addEventListener('click',() => {
+     humanvalue = 'Paper';
+    playGame(computervalue, humanvalue);
+});
+const bscissors = document.querySelector("#scissors");
+bscissors.addEventListener('click',() => {
+     humanvalue = 'Scissors';
+    playGame(computervalue, humanvalue);
+});
+
+
+
